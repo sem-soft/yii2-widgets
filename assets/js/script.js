@@ -43,9 +43,9 @@ function translitirate(word, forUrl)
 {
     var dictionary = forUrl ? dictForUrl : dictForText;
     
-    var r = new RegExp(s, 'g');
+    var r = new RegExp(s + '{2,}', 'g');
     
-    return word.split('').map(function (char){
-        return dictionary[char] || s;
+    return word.split('').map(function (char) {
+        return dictionary[char] || char;
     }).join("").replace(r, s);
 }
