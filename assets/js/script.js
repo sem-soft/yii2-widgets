@@ -41,15 +41,11 @@ var dictForUrl = {
  */
 function translitirate(word, forUrl)
 {
-    f = function (char) { 
-        return dictForText[char] || char; 
-    };
+    var dictionary = forUrl ? dictForUrl : dictForText;
     
-    if (typeof forUrl !== 'undefined') {
-        f = function (char) { 
-            return dictForUrl[char] || char;
-        };
-    }
+    var r = new RegExp(s, 'g');
     
-    return word.split('').map(f).join("").replace(/s{2,}/, s);
+    return word.split('').map(function (char){
+        return dictionary[char] || s;
+    }).join("").replace(r, s);
 }
