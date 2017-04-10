@@ -1,0 +1,23 @@
+{
+    "name": "sem-soft/yii2-widgets",
+    "description": "Set of additional basic widgets for Yii2 Framework",
+    "license": "BSD 3-Clause",
+    "type": "yii2-widgets",
+    "require": {
+        "php": ">=5.4.0",
+        "ext-mbstring": "*",
+        "ext-ctype": "*",
+        "lib-pcre": "*"
+    },
+    "authors": [
+        {
+            "name": "Samsonov Vladimir",
+            "email": "samsonov.sem@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "sem\\widgets\\": ""
+        }
+    }
+}
