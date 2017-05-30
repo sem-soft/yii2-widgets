@@ -23,7 +23,7 @@ var dictForUrl = {
 	"р":"r",	"о":"o",	"л":"l",	"д":"d",	"ж":"zh",	"э":"e",
 	"Я":"Ya",	"Ч":"CH",	"С":"S",	"М":"M",	"И":"I",	"Т":"T",
 	"Ь":"",		"Б":"B",	"Ю":"YU",	"я":"ya",	"ч":"ch",	"с":"s",
-	"м":"m",	"и":"i",	"т":"t",	"ь":"",		"б":"b",	"ю":"yu",
+	"м":"m",	"и":"i",	"т":"t",	"ь":"",        "б":"b",	"ю":"yu",
 	
 	' ': s,		'_': s,		'`': s,		'~': s,		'!': s,		'@': s,
 	'#': s,		'$': s,		'%': s,		'^': s,		'&': s,		'*': s,
@@ -46,6 +46,7 @@ function translitirate(word, forUrl)
     var r = new RegExp(s + '{2,}', 'g');
     
     return word.split('').map(function (char) {
-        return dictionary[char] || char;
+        var isExist = typeof dictionary[char] != 'undefined';
+        return isExist ? dictionary[char] : char;
     }).join("").replace(r, s);
 }
