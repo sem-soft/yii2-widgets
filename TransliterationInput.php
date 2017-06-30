@@ -4,7 +4,6 @@
  * @copyright Copyright &copy; S.E.M. 2017-
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
-
 namespace sem\widgets;
 
 use yii\widgets\InputWidget;
@@ -17,40 +16,40 @@ use yii\helpers\Html;
  */
 class TransliterationInput extends InputWidget
 {
-    
+
     /**
      * HTML-идентификатор поля для результата транслитерации
      * @var string 
      */
     public $targetId;
-    
+
     /**
      * @inheritdoc
      */
     public function init()
     {
-	if (empty($this->targetId)) {
-	    throw new InvalidConfigException("id поля ввода назначения должно быть указано");
-	}
-	parent::init();
+        if (empty($this->targetId)) {
+            throw new InvalidConfigException("id поля ввода назначения должно быть указано");
+        }
+        parent::init();
     }
-    
+
     /**
      * @inheritdoc
      */
     public function run()
     {
-	$this->registerClientScript();
-	
-	$this->options['data-translit_target'] = '#' . $this->targetId;
-	
+        $this->registerClientScript();
+
+        $this->options['data-translit_target'] = '#' . $this->targetId;
+
         if ($this->hasModel()) {
-	    echo Html::activeTextInput($this->model, $this->attribute, $this->options);
+            echo Html::activeTextInput($this->model, $this->attribute, $this->options);
         } else {
-	    echo Html::textInput($this->name, $this->value, $this->options);
+            echo Html::textInput($this->name, $this->value, $this->options);
         }
     }
-    
+
     /**
      * Регистрирует необходимые ассеты для включения клиентских скриптов
      */
@@ -83,7 +82,7 @@ class TransliterationInput extends InputWidget
 
 	    });
 	});";
-	$view = $this->getView();
+        $view = $this->getView();
         TransliterationInputAsset::register($view);
         $view->registerJs($js);
     }
